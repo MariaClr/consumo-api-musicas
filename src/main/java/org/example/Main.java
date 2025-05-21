@@ -16,8 +16,28 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+Gson gson =  new GsonBuilder().setPrettyPrinting().create();
 
+OkHttpClient client = new OkHttpClient();
+
+System.out.print("Digite o nome da cantora: ");
+String artista = scanner.nextLine();
+
+System.out.print("Digite o nome do álbum: ");
+String album = scanner.nextLine();
+
+// Substitui espaços por + para a URL
+String artistaFormatado = artista.replace(" ", "+");
+String albumFormatado = album.replace(" ", "+");
+
+String url = "https://ws.audioscrobbler.com/2.0/?method=album.getInfo" +
+    "&api_key=04ebeff30478760fcba031153ed86e77" +
+    "&artist=" + artistaFormatado +
+    "&album=" + albumFormatado +
+    "&format=json";
 
 
     }
 }
+
